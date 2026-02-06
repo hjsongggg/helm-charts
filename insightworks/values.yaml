@@ -1,0 +1,7 @@
+# 루트 values - ingress만 담당
+namespace: cicd
+
+ingress:
+  enabled: true
+  className: nginx
+  host: portal.local

@@ -1,0 +1,14 @@
+# InsightWorks 전체 시스템 Umbrella Chart
+apiVersion: v2
+name: insightworks
+version: 0.1.0
+dependencies:
+  - name: portal-api
+    version: 0.1.0
+    repository: "file://charts/portal-api"
+  - name: portal-front
+    version: 0.1.0
+    repository: "file://charts/portal-front"
+  - name: postgres
+    version: 0.1.0
+    repository: "file://charts/postgres"

@@ -1,0 +1,24 @@
+image:
+  repository: ghcr.io/hjsongggg/sailingstone-portal-api
+  tag: latest
+  pullPolicy: Always
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  portalPort: 8085
+  quartzPort: 8086
+
+env:
+  SPRING_PROFILES_ACTIVE: dev
+
+db:
+  host: postgres
+  port: 5432
+  name: sailingstone
+  username: sailingstone
+
+secret:
+  portalDbPasswordKey: POSTGRES_PASSWORD
+  hyperDbPasswordKey: POSTGRES_PASSWORD

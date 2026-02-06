@@ -1,0 +1,15 @@
+# 외부(NodePort)에서 Frontend에 접근하기 위한 Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: portal-front
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: portal-front
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+      {{- if .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
+      {{- end }}

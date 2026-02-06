@@ -1,0 +1,12 @@
+# PostgreSQL 이미지, 스토리지 크기, 기본 계정 정보 설정
+image:
+  repository: postgres
+  tag: "15"
+
+storage:
+  size: 10Gi
+
+env:
+  POSTGRES_DB: sailingstone
+  POSTGRES_USER: sailingstone
+  POSTGRES_PASSWORD: sailingstone

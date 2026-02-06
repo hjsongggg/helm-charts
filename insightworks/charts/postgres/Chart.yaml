@@ -1,0 +1,5 @@
+# PostgreSQL 데이터베이스를 StatefulSet으로 배포하기 위한 Chart
+apiVersion: v2
+name: postgres
+version: 0.1.0
+appVersion: "15"

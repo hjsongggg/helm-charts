@@ -1,0 +1,34 @@
+{{- if .Values.ingress.enabled }}
+# InsightWorks Ingress (Minikube 기준)
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: insightworks-ingress
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portal-front
+                port:
+                  number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: portal-api
+                port:
+                  name: portal
+          - path: /quartz
+            pathType: Prefix
+            backend:
+              service:
+                name: portal-api
+                port:
+                  name: quartz
+{{- end }}

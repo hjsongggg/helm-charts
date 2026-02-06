@@ -1,0 +1,42 @@
+# insightworks-portal API Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-api
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: portal-api
+  template:
+    metadata:
+      labels:
+        app: portal-api
+    spec:
+      containers:
+        - name: portal-api
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: portal-api-config
+          ports:
+            - containerPort: {{ .Values.service.portalPort }} # portal
+            - containerPort: {{ .Values.service.quartzPort }} # quartz
+          env:
+            - name: DB_URL
+              value: "jdbc:postgresql://{{ .Values.db.host }}:{{ .Values.db.port }}/{{ .Values.db.name }}"
+            - name: DB_USERNAME
+              value: {{ .Values.db.username }}
+
+            - name: PORTAL_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: {{ .Values.secret.portalDbPasswordKey }}
+
+            - name: HYPER_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: {{ .Values.secret.hyperDbPasswordKey }}

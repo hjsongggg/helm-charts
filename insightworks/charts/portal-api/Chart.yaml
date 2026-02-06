@@ -1,0 +1,4 @@
+# Portal API (portal + quartz를 한 컨테이너에서 실행)
+apiVersion: v2
+name: portal-api
+version: 0.1.0

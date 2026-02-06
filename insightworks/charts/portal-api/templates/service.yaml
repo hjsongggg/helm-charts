@@ -1,0 +1,16 @@
+# portal-api Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: portal-api
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: portal-api
+  ports:
+    - name: portal
+      port: {{ .Values.service.portalPort }}
+      targetPort: {{ .Values.service.portalPort }}
+    - name: quartz
+      port: {{ .Values.service.quartzPort }}
+      targetPort: {{ .Values.service.quartzPort }}
