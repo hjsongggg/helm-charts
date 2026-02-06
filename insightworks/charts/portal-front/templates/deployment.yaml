@@ -19,7 +19,7 @@ spec:
       {{- end }}
       containers:
         - name: portal-front
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.targetPort }}   # Next.js actual port

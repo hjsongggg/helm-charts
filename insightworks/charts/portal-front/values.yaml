@@ -2,7 +2,6 @@ replicaCount: 1
 
 image:
   repository: ghcr.io/hjsongggg/sailingstone-portal-front
-  tag: latest
   pullPolicy: Always
   pullSecret: ""
 
