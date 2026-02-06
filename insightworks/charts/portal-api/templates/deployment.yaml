@@ -13,6 +13,11 @@ spec:
       labels:
         app: portal-api
     spec:
+      {{- $pullSecret := .Values.image.pullSecret | default .Values.global.imagePullSecret.name }}
+      {{- if $pullSecret }}
+      imagePullSecrets:
+        - name: {{ $pullSecret }}
+      {{- end }}
       containers:
         - name: portal-api
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

@@ -12,9 +12,10 @@ spec:
       labels:
         app: portal-front
     spec:
-      {{- if .Values.image.pullSecret }}
+      {{- $pullSecret := .Values.image.pullSecret | default .Values.global.imagePullSecret.name }}
+      {{- if $pullSecret }}
       imagePullSecrets:
-        - name: {{ .Values.image.pullSecret }}
+        - name: {{ $pullSecret }}
       {{- end }}
       containers:
         - name: portal-front
