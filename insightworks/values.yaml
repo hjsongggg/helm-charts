@@ -10,7 +10,7 @@ imagePullSecret:
   enabled: false
   name: ghcr-secret
   username: "hjsongggg"
-  password: "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"
+  password: ""
   email: "hjsong@sailingstone.io"
 
 global:
