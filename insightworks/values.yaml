@@ -7,7 +7,7 @@ ingress:
   host: portal.local
 
 imagePullSecret:
-  enabled: false
+  enabled: true
   name: ghcr-secret
   username: "hjsongggg"
   password: ""
